@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build: .
+    environment:
+      DB_HOST: ec2-184-73-197-211.compute-1.amazonaws.com
+      DB_USER: yfwimwyujwurte
+      DB_PASSWORD: 1bd7021795c86d6ee850170c415c2ced516a10a3aeafb51a712efdd1c60e3210
+      DB_DATABASE: d14cab64gsgbvg
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
