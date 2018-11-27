@@ -4,26 +4,26 @@ var sequelize = require('sequelize');
 module.exports = {
   list(req, res) {
     let where = {};
-    if (req.params.codigo != null && req.params.codigo != "") { where["id"] = req.params.codigo }
-    if (req.params.año != null && req.params.año != "") { where["anio"] = req.params.año }
-    if (req.params.nro != null && req.params.nro != "") { where["nro"] = req.params.nro }
-    if (req.params.rut != null && req.params.rut != "") { where["rut"] = req.params.rut }
-    if (req.params.nombre != null && req.params.nombre != "") { where["nombre"] = req.params.nombre }
-    if (req.params.bonificacion != null && req.params.bonificacion != "") { where["bonificacion"] = req.params.bonificacion }
-    if (req.params.comuna != null && req.params.comuna != "") { where["comuna"] = req.params.comuna }
-    if (req.params.bus_comuna != null && req.params.bus_comuna != "") { where["bus_comuna"] = req.params.bus_comuna }
-    if (req.params.fecha_acto_venta != null && req.params.fecha_acto_venta != "") { where["fecha_acto_venta"] = req.params.fecha_acto_venta }
-    if (req.params.bus_financiador != null && req.params.bus_financiador != "") { where["bus_financiador"] = req.params.bus_financiador }
-    if (req.params.mes != null && req.params.mes != "") { where = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.params.mes)} 
+    if (req.query.codigo != null && req.query.codigo != "") { where["id"] = req.query.codigo }
+    if (req.query.año != null && req.query.año != "") { where["anio"] = req.query.año }
+    if (req.query.nro != null && req.query.nro != "") { where["nro"] = req.query.nro }
+    if (req.query.rut != null && req.query.rut != "") { where["rut"] = req.query.rut }
+    if (req.query.nombre != null && req.query.nombre != "") { where["nombre"] = req.query.nombre }
+    if (req.query.bonificacion != null && req.query.bonificacion != "") { where["bonificacion"] = req.query.bonificacion }
+    if (req.query.comuna != null && req.query.comuna != "") { where["comuna"] = req.query.comuna }
+    if (req.query.bus_comuna != null && req.query.bus_comuna != "") { where["bus_comuna"] = req.query.bus_comuna }
+    if (req.query.fecha_acto_venta != null && req.query.fecha_acto_venta != "") { where["fecha_acto_venta"] = req.query.fecha_acto_venta }
+    if (req.query.bus_financiador != null && req.query.bus_financiador != "") { where["bus_financiador"] = req.query.bus_financiador }
+    if (req.query.mes != null && req.query.mes != "") { where = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.query.mes)} 
 
-    if ( req.params.limit == null) { req.params.limit = 3 }
-    if ( req.params.offset == null) { req.params.offset = 1 }
+    if ( req.query.limit == null ) { req.query.limit = 3 }
+    if ( req.query.offset == null ) { req.query.offset = 0 }
 
     return nomina
     .findAndCountAll({
       where,
-      limit: req.params.limit,
-      offset: req.params.offset,
+      limit: parseInt(req.query.limit),
+      offset: parseInt(req.query.offset),
     })
     .then(nomina => {
      if(nomina.count <= 0){
