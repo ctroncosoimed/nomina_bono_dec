@@ -7,11 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     rut: DataTypes.STRING,
     nombre: DataTypes.STRING,
     bonificacion: DataTypes.INTEGER,
-    comuna_valida: DataTypes.BOOLEAN,
+    comuna: DataTypes.BOOLEAN,
     fecha_acto_venta: DataTypes.DATE,
     estado: DataTypes.BOOLEAN,
-    financiador: DataTypes.STRING,
-    status: DataTypes.BOOLEAN
+    bus_financiador: DataTypes.STRING,
+    status: DataTypes.BOOLEAN,
+    bus_comuna: DataTypes.STRING
   }, {});
   nomina.associate = function(models) {
     // associations can be defined here

@@ -21,16 +21,16 @@ module.exports = {
       bonificacion: {
         type: Sequelize.INTEGER
       },
-      comuna_valida: {
+      comuna: {
         type: Sequelize.BOOLEAN
       },
-      fecha_acto_venta: {
+      comuna: {
+        type: Sequelize.BOOLEAN
+      },             
+      bus_comuna: {
         type: Sequelize.DATE
       },
-      estado: {
-        type: Sequelize.BOOLEAN
-      },
-      financiador: {
+      bus_financiador: {
         type: Sequelize.STRING
       },
       createdAt: {

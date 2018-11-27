@@ -10,10 +10,11 @@ module.exports = {
     if (req.body.rut != null && req.body.rut != "") { where["rut"] = req.body.rut }
     if (req.body.nombre != null && req.body.nombre != "") { where["nombre"] = req.body.nombre }
     if (req.body.bonificacion != null && req.body.bonificacion != "") { where["bonificacion"] = req.body.bonificacion }
-    if (req.body.comuna_valida != null && req.body.comuna_valida != "") { where["comuna_valida"] = req.body.comuna_valida }
+    if (req.body.comuna != null && req.body.comuna != "") { where["comuna"] = req.body.comuna }
+    if (req.body.bus_comuna != null && req.body.bus_comuna != "") { where["bus_comuna"] = req.body.bus_comuna }
     if (req.body.fecha_acto_venta != null && req.body.fecha_acto_venta != "") { where["fecha_acto_venta"] = req.body.fecha_acto_venta }
     if (req.body.estado != null && req.body.estado != "") { where["estado"] = req.body.estado }
-    if (req.body.financiador != null && req.body.financiador != "") { where["financiador"] = req.body.financiador }
+    if (req.body.bus_financiador != null && req.body.bus_financiador != "") { where["bus_financiador"] = req.body.bus_financiador }
     if (req.body.mes != null && req.body.mes != "") { where = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.body.mes)} 
 
     if ( req.body.limit == null) { req.body.limit = 3 }
