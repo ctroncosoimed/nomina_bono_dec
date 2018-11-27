@@ -12,5 +12,5 @@ RUN npm install --save sequelize
 RUN npm install -g sequelize-cli   
 RUN npm install -g nodemon
 
-EXPOSE 3000
+EXPOSE 8086
 CMD [ "npm", "start" ]
