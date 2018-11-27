@@ -14,7 +14,8 @@ module.exports = {
     if (req.query.bus_comuna != null && req.query.bus_comuna != "") { where["bus_comuna"] = req.query.bus_comuna }
     if (req.query.fecha_acto_venta != null && req.query.fecha_acto_venta != "") { where["fecha_acto_venta"] = req.query.fecha_acto_venta }
     if (req.query.bus_financiador != null && req.query.bus_financiador != "") { where["bus_financiador"] = req.query.bus_financiador }
-    if (req.query.mes != null && req.query.mes != "") { where = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.query.mes)} 
+    if (req.query.mes != null && req.query.mes != "") { where = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.query.mes)}
+    if (req.query.status != null && req.query.status != "") { where["status"] = req.query.status }
 
     if ( req.query.limit == null ) { req.query.limit = 3 }
     if ( req.query.offset == null ) { req.query.offset = 0 }
