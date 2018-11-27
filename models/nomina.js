@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     bonificacion: DataTypes.INTEGER,
     comuna: DataTypes.BOOLEAN,
     fecha_acto_venta: DataTypes.DATE,
-    estado: DataTypes.BOOLEAN,
     bus_financiador: DataTypes.STRING,
     status: DataTypes.BOOLEAN,
     bus_comuna: DataTypes.STRING

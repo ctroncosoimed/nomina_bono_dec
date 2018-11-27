@@ -4,27 +4,26 @@ var sequelize = require('sequelize');
 module.exports = {
   list(req, res) {
     let where = {};
-    if (req.body.codigo != null && req.body.codigo != "") { where["id"] = req.body.codigo }
-    if (req.body.año != null && req.body.año != "") { where["anio"] = req.body.año }
-    if (req.body.nro != null && req.body.nro != "") { where["nro"] = req.body.nro }
-    if (req.body.rut != null && req.body.rut != "") { where["rut"] = req.body.rut }
-    if (req.body.nombre != null && req.body.nombre != "") { where["nombre"] = req.body.nombre }
-    if (req.body.bonificacion != null && req.body.bonificacion != "") { where["bonificacion"] = req.body.bonificacion }
-    if (req.body.comuna != null && req.body.comuna != "") { where["comuna"] = req.body.comuna }
-    if (req.body.bus_comuna != null && req.body.bus_comuna != "") { where["bus_comuna"] = req.body.bus_comuna }
-    if (req.body.fecha_acto_venta != null && req.body.fecha_acto_venta != "") { where["fecha_acto_venta"] = req.body.fecha_acto_venta }
-    if (req.body.estado != null && req.body.estado != "") { where["estado"] = req.body.estado }
-    if (req.body.bus_financiador != null && req.body.bus_financiador != "") { where["bus_financiador"] = req.body.bus_financiador }
-    if (req.body.mes != null && req.body.mes != "") { where = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.body.mes)} 
+    if (req.params.codigo != null && req.params.codigo != "") { where["id"] = req.params.codigo }
+    if (req.params.año != null && req.params.año != "") { where["anio"] = req.params.año }
+    if (req.params.nro != null && req.params.nro != "") { where["nro"] = req.params.nro }
+    if (req.params.rut != null && req.params.rut != "") { where["rut"] = req.params.rut }
+    if (req.params.nombre != null && req.params.nombre != "") { where["nombre"] = req.params.nombre }
+    if (req.params.bonificacion != null && req.params.bonificacion != "") { where["bonificacion"] = req.params.bonificacion }
+    if (req.params.comuna != null && req.params.comuna != "") { where["comuna"] = req.params.comuna }
+    if (req.params.bus_comuna != null && req.params.bus_comuna != "") { where["bus_comuna"] = req.params.bus_comuna }
+    if (req.params.fecha_acto_venta != null && req.params.fecha_acto_venta != "") { where["fecha_acto_venta"] = req.params.fecha_acto_venta }
+    if (req.params.bus_financiador != null && req.params.bus_financiador != "") { where["bus_financiador"] = req.params.bus_financiador }
+    if (req.params.mes != null && req.params.mes != "") { where = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.params.mes)} 
 
-    if ( req.body.limit == null) { req.body.limit = 3 }
-    if ( req.body.offset == null) { req.body.offset = 1 }
+    if ( req.params.limit == null) { req.params.limit = 3 }
+    if ( req.params.offset == null) { req.params.offset = 1 }
 
     return nomina
     .findAndCountAll({
       where,
-      limit: req.body.limit,
-      offset: req.body.offset,
+      limit: req.params.limit,
+      offset: req.params.offset,
     })
     .then(nomina => {
      if(nomina.count <= 0){
@@ -53,6 +52,31 @@ module.exports = {
           })
           .then(() => res.status(200).json({status: 200, message: 'updated'}))  // Send back the updated todo.
           .catch((error) => res.status(400).json({ status: 400 , message: error }));
+      })
+      .catch((error) => res.status(400).json({ status:400, message: error }));
+    },
+
+  insert(req, res) {
+    return nomina
+      .create({
+        id: req.body.id,
+        anio: req.body.año,
+        nro: req.body.nro,
+        rut: req.body.rut,
+        nombre: req.body.nombre,
+        bonificacion: req.body.bonificacion,
+        comuna: req.body.comuna,
+        fecha_acto_venta: req.body.fecha_acto_venta,
+        bus_financiador: req.body.bus_financiador,
+        status: false,
+        bus_comuna: req.body.bus_comuna,
+      })
+      .then(nomina => {
+        if (!nomina) {
+          return res.status(404).send({ status: 403, message: 'Nomina Not Found' });
+        } else {
+          return res.status(201).send({ status: 403, message: 'Created' });
+        }
       })
       .catch((error) => res.status(400).json({ status:400, message: error }));
     },

@@ -1,27 +1,23 @@
 {
   "development": {
-    "username": "yfwimwyujwurte",
-    "password": "1bd7021795c86d6ee850170c415c2ced516a10a3aeafb51a712efdd1c60e3210",
-    "database": "d14cab64gsgbvg",
-    "host": "ec2-184-73-197-211.compute-1.amazonaws.com",
-    "dialect": "postgres",
-    "port":"5432",
-    "dialectOptions": {
-      "ssl": true
-    }
+    "username": "dlopez",
+    "password": "3yA5GXdn",
+    "database": "nomina_bono_dec",
+    "host": "172.16.14.33",
+    "dialect": "mysql"
   },
   "test": {
-    "username": "yfwimwyujwurte",
-    "password": "1bd7021795c86d6ee850170c415c2ced516a10a3aeafb51a712efdd1c60e3210",
-    "database": "d14cab64gsgbvg",
-    "host": "ec2-184-73-197-211.compute-1.amazonaws.com",
-    "dialect": "postgres"
+    "username": "dlopez",
+    "password": "3yA5GXdn",
+    "database": "nomina_bono_dec",
+    "host": "172.16.14.33",
+    "dialect": "mysql"
   },
   "production": {
-    "username": "yfwimwyujwurte",
-    "password": "1bd7021795c86d6ee850170c415c2ced516a10a3aeafb51a712efdd1c60e3210",
-    "database": "d14cab64gsgbvg",
-    "host": "ec2-184-73-197-211.compute-1.amazonaws.com",
-    "dialect": "postgres"
+    "username": "dlopez",
+    "password": "3yA5GXdn",
+    "database": "nomina_bono_dec",
+    "host": "172.16.14.33",
+    "dialect": "mysql"
   }
 }

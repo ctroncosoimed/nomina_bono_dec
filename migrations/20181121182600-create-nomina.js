@@ -33,6 +33,9 @@ module.exports = {
       bus_financiador: {
         type: Sequelize.STRING
       },
+      fecha_acto_venta: {
+        type: Sequelize.DATE
+      },      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
