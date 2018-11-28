@@ -13,6 +13,10 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
   dialect: 'mysql'
 })
 
+console.log(process.env.DB_DATABASE);
+console.log(process.env.DB_USERNAME);
+
+
 sequelize.authenticate()
   .then(() => {
     console.log('Conectado')
