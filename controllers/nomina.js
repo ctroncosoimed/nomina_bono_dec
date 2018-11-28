@@ -4,7 +4,7 @@ var sequelize = require('sequelize');
 module.exports = {
   list(req, res) {
     let where = {};
-    if (req.query.codigo != null && req.query.codigo != "") { where["id"] = req.query.codigo }
+    if (req.query.codigo != null && req.query.codigo != "") { where["id"] = req.query.codigo }  
     if (req.query.año != null && req.query.año != "") { where["anio"] = req.query.año }
     if (req.query.nro != null && req.query.nro != "") { where["nro"] = req.query.nro }
     if (req.query.rut != null && req.query.rut != "") { where["rut"] = req.query.rut }
@@ -14,9 +14,8 @@ module.exports = {
     if (req.query.bus_comuna != null && req.query.bus_comuna != "") { where["bus_comuna"] = req.query.bus_comuna }
     if (req.query.fecha_acto_venta != null && req.query.fecha_acto_venta != "") { where["fecha_acto_venta"] = req.query.fecha_acto_venta }
     if (req.query.bus_financiador != null && req.query.bus_financiador != "") { where["bus_financiador"] = req.query.bus_financiador }
-    if (req.query.mes != null && req.query.mes != "") { where = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.query.mes)}
+    if (req.query.mes != null && req.query.mes != "") { where[""] = sequelize.literal("EXTRACT(month FROM fecha_acto_venta) = "+req.query.mes)}
     if (req.query.status != null && req.query.status != "") { where["status"] = req.query.status }
-
     if ( req.query.limit == null ) { req.query.limit = 3 }
     if ( req.query.offset == null ) { req.query.offset = 0 }
 
@@ -28,7 +27,7 @@ module.exports = {
     })
     .then(nomina => {
      if(nomina.count <= 0){
-      res.status(200).json({status: 403, message: "No se encontraron registros" });
+      res.status(200).json({status: 403, message: "No records found" });
      }else{
       res.status(200).json({status: 200, message: nomina, limit: req.query.limit, offset: req.query.offset});
      }
@@ -74,7 +73,7 @@ module.exports = {
       })
       .then(nomina => {
         if (!nomina) {
-          return res.status(404).send({ status: 403, message: 'Nomina Not Found' });
+          return res.status(404).send({ status: 403, message: 'Unable to save' });
         } else {
           return res.status(201).send({ status: 403, message: 'Created' });
         }

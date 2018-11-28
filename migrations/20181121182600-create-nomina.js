@@ -28,7 +28,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },             
       bus_comuna: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       bus_financiador: {
         type: Sequelize.STRING

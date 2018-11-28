@@ -1,7 +1,16 @@
-version: '3'
+version: '2'
 services:
   web:
     build: .
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules
+    ports:
+      - "8086:8086"
+    environment:
+      DB_DATABASE: 'nomina_bono_dec'
+      DB_USERNAME: dlopez
+      DB_PASSWORD: 3yA5GXdn
+      DB_HOST: 172.16.14.33
+      DB_DIALECT: mysql
+      PORT: 8086

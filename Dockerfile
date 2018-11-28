@@ -8,9 +8,9 @@ RUN npm install
 
 COPY . .
 
-RUN npm install --save sequelize  
-RUN npm install -g sequelize-cli   
+RUN npm install --save sequelize
 RUN npm install -g nodemon
 RUN npm install mysql2
 
+EXPOSE 8086
 CMD [ "npm", "start" ]
