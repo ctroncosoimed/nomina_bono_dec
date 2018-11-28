@@ -22,7 +22,7 @@ sequelize.authenticate()
     console.log('Conectado')
   })
   .catch(err => {
-    console.log('No se conecto')
+    console.log('No se conecto => '+err.message)
   })
 
 fs
