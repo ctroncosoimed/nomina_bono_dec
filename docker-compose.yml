@@ -11,5 +11,5 @@ services:
       DB_DATABASE: nomina_bono_dec
       DB_USERNAME: dlopez
       DB_PASSWORD: 3yA5GXdn
-      DB_HOST: 172.16.14.33
+      DB_HCONNECTION: 172.16.14.33
       PORT: 8086
