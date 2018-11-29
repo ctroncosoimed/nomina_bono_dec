@@ -39,7 +39,7 @@ module.exports = {
     }
     
     if (req.query.bus_comuna != null && req.query.bus_comuna != "") { 
-      if (!validator.isAlpha(req.query.comuna)) { return res.json({status: 403, message: 'Params comuna only Letters'}) };
+      if (!validator.isAlpha(req.query.bus_comuna)) { return res.json({status: 403, message: 'Params bus_comuna only Letters'}) };
       where["bus_comuna"] = req.query.bus_comuna 
     }
     
