@@ -5,7 +5,7 @@ module.exports = {
   list(req, res) {
     let where = {};
     if (req.query.codigo != null && req.query.codigo != "") { where["id"] = req.query.codigo }  
-    if (req.query.año != null && req.query.año != "") { where["anio"] = req.query.año }
+    if (req.query.anio != null && req.query.anio != "") { where["anio"] = req.query.anio }
     if (req.query.nro != null && req.query.nro != "") { where["nro"] = req.query.nro }
     if (req.query.rut != null && req.query.rut != "") { where["rut"] = req.query.rut }
     if (req.query.nombre != null && req.query.nombre != "") { where["nombre"] = req.query.nombre }
@@ -60,7 +60,7 @@ module.exports = {
     return nomina
       .create({
         id: req.body.id,
-        anio: req.body.año,
+        anio: req.body.anio,
         nro: req.body.nro,
         rut: req.body.rut,
         nombre: req.body.nombre,
