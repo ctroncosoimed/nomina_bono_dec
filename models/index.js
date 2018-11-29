@@ -8,8 +8,8 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
-const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-  host: process.env.DB_HCONNECTION,
+const sequelize = new Sequelize('nomina_bono_dec', 'dlopez', '3yA5GXdn', {
+  host: '172.16.14.33',
   dialect: 'mysql'
 })
 
