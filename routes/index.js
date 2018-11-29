@@ -3,9 +3,9 @@ var router = express.Router();
 const nominaController = require('../controllers').nomina;
 
 
-router.get('/api/v1/nomina', nominaController.list);
-router.put('/api/v1/nomina/:codigo', nominaController.update);
-router.post('/api/v1/nomina', nominaController.insert);
+router.get('/bono_dec/nomina', nominaController.list);
+router.put('/bono_dec/nomina/:codigo', nominaController.update);
+router.post('/bono_dec/nomina', nominaController.insert);
 
 
 module.exports = router;
